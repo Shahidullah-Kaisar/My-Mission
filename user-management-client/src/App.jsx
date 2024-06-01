@@ -31,6 +31,10 @@ function App() {
     .then(res => res.json())
     .then(data => {
       console.log('inside post response', data)
+
+      const newUsers = [...users, data] 
+      setUsers(newUsers);
+      form.reset();
     })
 
   }
@@ -47,7 +51,7 @@ function App() {
       </form>
 
       {
-        users.map(output => <p key={output.id}> {output.id}: {output.name} : {output.Email} </p> )
+        users.map(output => <p key={output.id}> {output.id}: {output.name} : {output.email} </p> )
       }
       
     </>
