@@ -12,18 +12,23 @@ function App() {
     const output = {name,email}
     console.log(output)
 
-    fetch('http://localhost:5000/database', {
+    fetch('http://localhost:5000/database', { //client to server
       method: 'POST',
       headers:{
         'content-type': 'application/json'
       },
       body: JSON.stringify(output)
     })
-    .then(res => res.json())
+    .then(res => res.json()) //client to server end
+
     .then(data =>{
       console.log(data);
+      if(data.insertedId){
+        alert('successfully added')
+        form.reset();
+      }
     })
-  }
+   }
 
   return (
     <>
