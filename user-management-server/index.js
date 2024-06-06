@@ -13,7 +13,7 @@ app.listen(port , ()=>{
     console.log(`server is running on port: ${port}`)
 })*/
 
- 
+
 const express= require('express')
 const cors = require ('cors')
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
@@ -50,6 +50,14 @@ async function run() {
         res.send(result)
       })
 
+      app.get('/database/:id', async(req,res) =>{  //specific id showing in ui from server
+        const id= req.params.id;
+        const query = {_id: new ObjectId(id)}
+        const user = await userCollection.findOne(query);
+        res.send(user);
+      })
+
+
       app.post('/database', async (req, res) => { 
           try {
               const user = req.body;
@@ -62,6 +70,26 @@ async function run() {
               res.status(500).send(err.message);
           }
       });
+
+      app.put('/database/:id', async(req,res) => {
+        const id = req.params.id;
+        const updateUser = req.body;
+        console.log(updateUser);
+
+        //this code need for send updated data into database
+        const filter = {_id: new ObjectId(id)}
+        const opitons = {upsert: true}
+        const updatedUser = {
+          $set:{
+            name: updateUser.name,
+            email: updateUser.email
+          }
+        }
+        const result = await userCollection.updateOne(filter,updatedUser,opitons)
+        res.send(result);
+
+
+      })
 
       app.delete('/database/:id', async(req,res) => {
         const id = req.params.id;

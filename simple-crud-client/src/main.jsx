@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import Users from './components/Users.jsx';
+import Update from './components/Update.jsx';
 
 import {
   createBrowserRouter,
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     path: '/users',
     element: <Users></Users>,
     loader: ()=> fetch('http://localhost:5000/database')
+  },
+  {
+    path: '/update/:id',
+    element: <Update></Update>,
+    loader: ({params})=> fetch(`http://localhost:5000/database/${params.id}`)
   }
 ]);
 

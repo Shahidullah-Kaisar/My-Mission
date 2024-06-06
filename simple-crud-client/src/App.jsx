@@ -23,7 +23,7 @@ function App() {
 
     .then(data =>{
       console.log(data);
-      if(data.insertedId){
+      if(data.insertedId){ //take insertedId in console
         alert('successfully added')
         form.reset();
       }
