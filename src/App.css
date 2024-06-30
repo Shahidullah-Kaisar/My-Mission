@@ -1,0 +1,54 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.country{
+  width: 350px;
+  border: 2px solid rebeccapurple;
+  border-radius: 10px;
+  margin: 10px;
+}
+.country-data{
+  margin: 20px;
+}
+h1{
+  text-align: center;
+}
+h2{
+  color: blueviolet;
+  text-align: center;
+}
+h3{
+  color: rgb(201, 142, 6);
+  text-align: center;
+}
+.countries{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+button{
+  background: rgb(96, 228, 96);
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 20px;
+  color: brown;
+  border: none;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+.visited{
+  background: rgba(128, 128, 128, 0.907);
+  border: 2px solid rgb(22, 243, 52);
+}
+.not-visited{
+  background: white;
+}
+.visit-country{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+}
+.img img{
+  width: 100px;
+  margin-left: 15px;
+}
